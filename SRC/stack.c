@@ -2,7 +2,7 @@
 //#define __STACK_H_
 //
 //extern struct stack;
-//extern struct stack * stack-buffer;
+//extern struct stack * stack_buffer;
 //void push(int);
 //int pop(void);
 //
@@ -17,20 +17,20 @@ struct stack{
 	struct stack * next;
 };
 
-struct stack * stack-buffer = NULL;
+struct stack * stack_buffer = NULL;
 
 void push(int value){
 	struct stack * ptr = (struct stack * )malloc(sizeof(struct stack));
 	ptr->element = value;
-	ptr->next = stack-buffer;
-	stack-buffer = ptr;
+	ptr->next = stack_buffer;
+	stack_buffer = ptr;
 }
 
 int pop(void){
-	if(stack-buffer){
-		struct stack * ptr = stack-buffer;
+	if(stack_buffer){
+		struct stack * ptr = stack_buffer;
 		int elem = ptr->element;
-		stack-buffer = ptr->next;
+		stack_buffer = ptr->next;
 		free(ptr);
 		return elem;
 	}
