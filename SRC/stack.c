@@ -1,21 +1,8 @@
-//#ifndef
-//#define __STACK_H_
-//
-//extern struct stack;
-//extern struct stack * stack_buffer;
-//void push(int);
-//int pop(void);
-//
-//#endif
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
 
-struct stack{
-	int element;
-	struct stack * next;
-};
 
 struct stack * stack_buffer = NULL;
 
@@ -36,3 +23,4 @@ int pop(void){
 	}
 	return 0;
 }
+
