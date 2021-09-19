@@ -6,21 +6,21 @@
 
 struct stack * stack_buffer = NULL;
 
-void push(int value){
+void push(char value){
 	struct stack * ptr = (struct stack * )malloc(sizeof(struct stack));
 	ptr->element = value;
 	ptr->next = stack_buffer;
 	stack_buffer = ptr;
 }
 
-int pop(void){
+char pop(void){
 	if(stack_buffer){
 		struct stack * ptr = stack_buffer;
-		int elem = ptr->element;
+		char elem = ptr->element;
 		stack_buffer = ptr->next;
 		free(ptr);
 		return elem;
 	}
-	return 0;
+	return ' ';
 }
 

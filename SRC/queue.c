@@ -2,15 +2,15 @@
 //#define __QUEUE_H_
 //
 //struct queue{
-//	float element;
+//	char element;
 //	struct queue * next;
 //};
 //
 //extern struct queue * queue_buffer;
 //extern struct queue * queue_rear;
 //
-//void enqueue(float);
-//float  dequeue(void);
+//void enqueue(char);
+//char dequeue(void);
 //
 //#endif
 #include <stdio.h>
@@ -21,18 +21,21 @@ struct queue * queue_buffer = NULL;
 struct queue * queue_rear = NULL;
 
 
-void enqueue(float element){
-	struct queue * ptr = (struct queue) malloc(sizeof(struct queue));
+void enqueue(char element){
+	struct queue * ptr = (struct queue *) malloc(sizeof(struct queue));
 	ptr->element = element;
 	ptr->next = NULL;
-	(queue_rear) ? queue_rear->next = ptr : queue_buffer = ptr;
-	queue_rear = ptr
+	if(queue_rear)
+		queue_rear->next = ptr;
+	else
+		queue_buffer = ptr;
+	queue_rear = ptr;
 }
 
-float dequeue(void){
+char dequeue(void){
 	if(queue_buffer){	
 		struct queue  * ptr = queue_buffer;
-		float element = ptr->element;
+		char element = ptr->element;
 		queue_buffer = ptr->next;
 		if(ptr == queue_rear){
 			queue_rear = NULL;	
@@ -40,5 +43,5 @@ float dequeue(void){
 		free(ptr);
 		return element;
 	}
-	return 0;
+	return ' ';
 }
